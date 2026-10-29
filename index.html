@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRB Tech | Official Hub & Quick Links</title>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brb: {
+              red: '#E52328',
+              redHover: '#C81B20',
+              redLight: '#FF3B41',
+              dark: '#0B0D10',
+              card: '#13161C',
+              cardBorder: 'rgba(255, 255, 255, 0.08)',
+              accent: '#1E232D'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 15px rgba(229, 35, 40, 0.3)' },
+              '100%': { boxShadow: '0 0 30px rgba(229, 35, 40, 0.7)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Glassmorphism & Scrollbar Styles */
+    body {
+      background-color: #08090C;
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(229, 35, 40, 0.12) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(229, 35, 40, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .glass-card {
+      background: rgba(19, 22, 28, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .glass-card-hover:hover {
+      transform: translateY(-3px) scale(1.01);
+      border-color: rgba(229, 35, 40, 0.4);
+      box-shadow: 0 12px 30px -10px rgba(229, 35, 40, 0.25);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Custom scrollbar for horizontal product tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer::after {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.1) 60%,
+        rgba(255, 255, 255, 0)
+      );
+      animation: shimmer 3s infinite;
+      content: '';
+    }
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+
+    /* Light theme (toggled via html.light) */
+    body, .glass-card, .glass-pill { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
+    .logo-light { display: none; }
+    html.light .logo-light { display: block; }
+    html.light .logo-dark { display: none; }
+
+    html.light body {
+      background-color: #F4F5F7;
+      background-image:
+        radial-gradient(at 10% 10%, rgba(229, 35, 40, 0.10) 0px, transparent 50%),
+        radial-gradient(at 90% 80%, rgba(229, 35, 40, 0.06) 0px, transparent 50%);
+      color: #0B0D10;
+    }
+    html.light .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(11, 13, 16, 0.08);
+      box-shadow: 0 8px 24px -16px rgba(11, 13, 16, 0.25);
+    }
+    html.light .glass-pill {
+      background: rgba(11, 13, 16, 0.04);
+      border-color: rgba(11, 13, 16, 0.1);
+    }
+    html.light .shimmer::after {
+      background-image: linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(229,35,40,0.03) 40%, rgba(255,255,255,0));
+    }
+    html.light .text-white:not([class*="bg-"]) { color: #0B0D10; }
+    html.light .text-slate-100, html.light .text-slate-200 { color: #1E232D; }
+    html.light .text-slate-300 { color: #3A4150; }
+    html.light .text-slate-400 { color: #5B6372; }
+    html.light .text-slate-500, html.light .text-slate-600 { color: #7A8291; }
+    html.light .text-emerald-400 { color: #059669; }
+    html.light .bg-emerald-400 { background-color: #059669; }
+    html.light .text-blue-400 { color: #2563EB; }
+    html.light .text-rose-400 { color: #E11D48; }
+    html.light .border-white\/5 { border-color: rgba(11, 13, 16, 0.06); }
+    html.light .border-white\/10 { border-color: rgba(11, 13, 16, 0.1); }
+    html.light .bg-slate-950\/60 { background-color: #FFFFFF; }
+    html.light .bg-slate-950\/80 { background-color: #F4F5F7; }
+    html.light .bg-slate-900\/95, html.light .bg-slate-900\/90 { background-color: rgba(255, 255, 255, 0.97); }
+    html.light .group:hover .group-hover\:text-white,
+    html.light .hover\:text-white:hover { color: #FFFFFF; }
+    html.light .glass-pill.hover\:text-white:hover,
+    html.light .glass-pill .group-hover\:text-white { color: #0B0D10; }
+  </style>
+
+  <script>
+    // Apply saved or system theme before first paint
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem('brb-theme'); } catch (e) {}
+      if (!theme) theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      if (theme === 'light') document.documentElement.classList.add('light');
+    })();
+  </script>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col justify-between items-center px-4 py-6 font-sans selection:bg-brb-red selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transform -translate-y-20 opacity-0 transition-all duration-300 ease-out pointer-events-none">
+    <div class="glass-card bg-slate-900/90 text-white px-5 py-3 rounded-full shadow-2xl border border-brb-red/50 flex items-center space-x-3 text-sm font-medium">
+      <div class="w-6 h-6 rounded-full bg-brb-red flex items-center justify-center text-white text-xs">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="w-full max-w-md mx-auto space-y-5">
+
+    <!-- TOP HEADER / BRAND CARD -->
+    <header class="glass-card rounded-3xl p-6 text-center relative overflow-hidden shimmer shadow-2xl border border-white/10">
+      
+      <!-- Top Decorative Accent Lines -->
+      <div class="absolute -top-12 -left-12 w-28 h-28 bg-brb-red/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -right-12 w-28 h-28 bg-brb-red/15 rounded-full blur-2xl pointer-events-none"></div>
+
+      <!-- Theme Toggle Button -->
+      <button onclick="toggleTheme()" title="Switch light / dark" aria-label="Switch light / dark theme" class="absolute top-4 left-4 w-9 h-9 glass-pill rounded-full flex items-center justify-center text-slate-300 hover:text-white hover:bg-brb-red/20 transition-all z-20">
+        <i id="theme-icon" class="fa-solid fa-sun text-sm"></i>
+      </button>
+
+      <!-- Language Switcher -->
+      <div class="absolute top-4 left-1/2 -translate-x-1/2 z-20 glass-pill rounded-full p-1 flex items-center text-[11px] font-bold" role="group" aria-label="Language">
+        <button onclick="setLang('uz')" data-lang="uz" class="lang-btn px-2.5 py-1 rounded-full transition-colors">UZ</button>
+        <button onclick="setLang('ru')" data-lang="ru" class="lang-btn px-2.5 py-1 rounded-full transition-colors">RU</button>
+        <button onclick="setLang('en')" data-lang="en" class="lang-btn px-2.5 py-1 rounded-full transition-colors">EN</button>
+      </div>
+
+      <!-- Action Share Button Header -->
+      <button onclick="shareHub()" title="Share Hub" class="absolute top-4 right-4 w-9 h-9 glass-pill rounded-full flex items-center justify-center text-slate-300 hover:text-white hover:bg-brb-red/20 transition-all">
+        <i class="fa-solid fa-share-nodes text-sm"></i>
+      </button>
+
+      <!-- SVG Logo Container -->
+      <div class="relative z-10 flex justify-center mb-3 pt-10">
+        <div class="p-3 bg-slate-950/60 rounded-2xl border border-white/10 shadow-inner flex items-center justify-center group cursor-pointer" onclick="window.location.reload()">
+          <img src="logo/20261029_055102%20(1).svg" alt="BRB Tech" class="logo-dark h-12 w-auto transition-transform duration-500 group-hover:scale-105">
+          <img src="logo/20261029_055102.svg" alt="BRB Tech" class="logo-light h-12 w-auto transition-transform duration-500 group-hover:scale-105">
+        </div>
+      </div>
+
+      <!-- Title & Verification -->
+      <div class="flex items-center justify-center space-x-2">
+        <h1 class="text-2xl font-extrabold text-white tracking-tight">BRB Tech</h1>
+        <span class="inline-flex items-center justify-center w-5 h-5 bg-brb-red rounded-full text-white text-[10px]" title="Verified Official Account">
+          <i class="fa-solid fa-check"></i>
+        </span>
+      </div>
+
+      <!-- Tagline -->
+      <p data-i18n="tagline" class="text-xs text-slate-300 mt-1.5 font-medium px-2 leading-relaxed">Empowering Enterprise Digital Transformation & High-Scale Business Ecosystems</p>
+
+      <!-- Status Pill -->
+      <div class="inline-flex items-center space-x-2 mt-3.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span data-i18n="status">Open for Business Partnerships</span>
+      </div>
+    </header>
+
+    <!-- QUICK CONTACT (Direct Actions) -->
+    <section class="space-y-2.5">
+      <a href="tel:+998555130505" class="glass-card glass-card-hover px-4 py-3 rounded-2xl flex items-center justify-between group">
+        <div class="flex items-center space-x-3.5 min-w-0">
+          <div class="w-10 h-10 flex-shrink-0 rounded-xl bg-brb-red/10 group-hover:bg-brb-red text-brb-red group-hover:text-white flex items-center justify-center text-base transition-colors">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-semibold uppercase tracking-wider text-slate-400" data-i18n="call">Call us</span>
+            <span class="block text-sm font-bold text-white truncate">+998 (55) 513 05 05</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:translate-x-0.5 transition-transform"></i>
+      </a>
+
+      <a href="mailto:main@brb-tech.uz" class="glass-card glass-card-hover px-4 py-3 rounded-2xl flex items-center justify-between group">
+        <div class="flex items-center space-x-3.5 min-w-0">
+          <div class="w-10 h-10 flex-shrink-0 rounded-xl bg-blue-500/10 group-hover:bg-blue-500 text-blue-400 group-hover:text-white flex items-center justify-center text-base transition-colors">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-semibold uppercase tracking-wider text-slate-400" data-i18n="email">Email</span>
+            <span class="block text-sm font-bold text-white truncate">main@brb-tech.uz</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:translate-x-0.5 transition-transform"></i>
+      </a>
+
+      <a href="https://maps.app.goo.gl/YYvYUuKS8pSczBzM9" target="_blank" rel="noopener" class="glass-card glass-card-hover px-4 py-3 rounded-2xl flex items-center justify-between group">
+        <div class="flex items-center space-x-3.5 min-w-0">
+          <div class="w-10 h-10 flex-shrink-0 rounded-xl bg-emerald-500/10 group-hover:bg-emerald-500 text-emerald-400 group-hover:text-white flex items-center justify-center text-base transition-colors">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-semibold uppercase tracking-wider text-slate-400" data-i18n="office">Office · Open in Maps</span>
+            <span class="block text-sm font-bold text-white truncate" data-i18n="address">Muqimi street 178a, Tashkent</span>
+            <span class="block text-[10px] text-slate-400 mt-0.5" data-i18n="hours">Chilanzar district · Weekdays 09:00–18:00</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:translate-x-0.5 transition-transform"></i>
+      </a>
+    </section>
+
+    <!-- MAIN 3 REQUESTED LINKS SECTION -->
+    <section class="space-y-3">
+      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider px-2 flex items-center justify-between">
+        <span data-i18n="channels">Official Channels</span>
+        <i class="fa-solid fa-link text-[10px]"></i>
+      </h2>
+
+      <!-- 1. Official Website Link -->
+      <a href="https://brb-tech.uz" target="_blank" class="block glass-card glass-card-hover p-4 rounded-2xl relative overflow-hidden group">
+        <div class="flex items-center justify-between relative z-10">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brb-red to-red-700 flex items-center justify-center text-white text-xl shadow-lg shadow-red-900/40 group-hover:scale-105 transition-transform">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <h3 class="font-bold text-white text-base group-hover:text-brb-redLight transition-colors" data-i18n="site">Main Website</h3>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-brb-red/20 text-brb-red border border-brb-red/30" data-i18n="siteTag">Official</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5" data-i18n="siteDesc">Explore solutions, ecosystem & IT services</p>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full glass-pill flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-brb-red transition-all">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
+        </div>
+        <!-- Subdomain indicator -->
+        <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+          <span>https://brb-tech.uz</span>
+          <span class="text-emerald-400 flex items-center"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-1"></span><span data-i18n="siteLive">Live Portal</span></span>
+        </div>
+      </a>
+
+      <!-- 2. LinkedIn Link -->
+      <a href="https://www.linkedin.com/company/brb-tech/" target="_blank" class="block glass-card glass-card-hover p-4 rounded-2xl relative overflow-hidden group">
+        <div class="flex items-center justify-between relative z-10">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white text-xl shadow-lg shadow-blue-900/30 group-hover:scale-105 transition-transform">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <h3 class="font-bold text-white text-base group-hover:text-blue-400 transition-colors">LinkedIn</h3>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20" data-i18n="liTag">Corporate</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5" data-i18n="liDesc">Careers, news & professional updates</p>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full glass-pill flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-blue-600 transition-all">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
+        </div>
+        <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+          <span>linkedin.com/company/brb-tech</span>
+          <span class="text-slate-400" data-i18n="liNote">Networking Hub</span>
+        </div>
+      </a>
+
+      <!-- 3. Instagram Link -->
+      <a href="https://www.instagram.com/brbtech.uz/" target="_blank" class="block glass-card glass-card-hover p-4 rounded-2xl relative overflow-hidden group">
+        <div class="flex items-center justify-between relative z-10">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg shadow-rose-900/30 group-hover:scale-105 transition-transform">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <h3 class="font-bold text-white text-base group-hover:text-rose-400 transition-colors">Instagram</h3>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20" data-i18n="igTag">Culture</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5" data-i18n="igDesc">Behind the scenes, events & media</p>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full glass-pill flex items-center justify-center text-slate-400 group-hover:text-white group-hover:bg-rose-500 transition-all">
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </div>
+        </div>
+        <div class="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+          <span>@brbtech.uz</span>
+          <span class="text-slate-400" data-i18n="igNote">Photos & Reels</span>
+        </div>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full max-w-md mx-auto text-center mt-6 pt-4 border-t border-white/5 text-xs text-slate-500 space-y-1">
+    <p>&copy; <span id="year"></span> BRB Tech LLC. <span data-i18n="rights">All rights reserved.</span></p>
+    <p class="text-[10px] text-slate-600" data-i18n="footerNote">Official Mobile Landing Page & QR Hub</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Set Current Year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Light / dark theme toggle
+    function syncThemeIcon() {
+      const isLight = document.documentElement.classList.contains('light');
+      document.getElementById('theme-icon').className = 'fa-solid ' + (isLight ? 'fa-moon' : 'fa-sun') + ' text-sm';
+    }
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.toggle('light');
+      try { localStorage.setItem('brb-theme', isLight ? 'light' : 'dark'); } catch (e) {}
+      syncThemeIcon();
+    }
+    syncThemeIcon();
+
+    // Languages (UZ / RU / EN), English by default
+    const I18N = {
+      en: {
+        tagline: 'Empowering Enterprise Digital Transformation & High-Scale Business Ecosystems',
+        status: 'Open for Business Partnerships',
+        call: 'Call us', email: 'Email', office: 'Office · Open in Maps',
+        address: 'Muqimi street 178a, Tashkent',
+        hours: 'Chilanzar district · Weekdays 09:00–18:00',
+        channels: 'Official Channels',
+        site: 'Main Website', siteTag: 'Official', siteDesc: 'Explore solutions, ecosystem & IT services', siteLive: 'Live Portal',
+        liTag: 'Corporate', liDesc: 'Careers, news & professional updates', liNote: 'Networking Hub',
+        igTag: 'Culture', igDesc: 'Behind the scenes, events & media', igNote: 'Photos & Reels',
+        rights: 'All rights reserved.', footerNote: 'Official Mobile Landing Page & QR Hub',
+        copied: 'Link copied to clipboard!', shareText: 'Official contact links for BRB Tech'
+      },
+      ru: {
+        tagline: 'Цифровая трансформация бизнеса и масштабные IT-экосистемы',
+        status: 'Открыты для деловых партнёрств',
+        call: 'Позвонить', email: 'Почта', office: 'Офис · Открыть на карте',
+        address: 'ул. Мукими, 178а, Ташкент',
+        hours: 'Чиланзарский район · Пн–Пт 09:00–18:00',
+        channels: 'Официальные каналы',
+        site: 'Наш сайт', siteTag: 'Официальный', siteDesc: 'Решения, экосистема и IT-услуги', siteLive: 'Сайт онлайн',
+        liTag: 'Корпоративный', liDesc: 'Карьера, новости и профессиональные обновления', liNote: 'Нетворкинг',
+        igTag: 'Культура', igDesc: 'Закулисье, события и медиа', igNote: 'Фото и Reels',
+        rights: 'Все права защищены.', footerNote: 'Официальная мобильная страница и QR-хаб',
+        copied: 'Ссылка скопирована!', shareText: 'Официальные контакты BRB Tech'
+      },
+      uz: {
+        tagline: 'Biznesni raqamli transformatsiya qilish va yirik IT-ekotizimlar',
+        status: 'Biznes hamkorlik uchun ochiqmiz',
+        call: "Qo'ng'iroq qilish", email: 'Email', office: 'Ofis · Xaritada ochish',
+        address: "Muqimiy ko'chasi, 178A, Toshkent",
+        hours: 'Chilonzor tumani · Ish kunlari 09:00–18:00',
+        channels: 'Rasmiy kanallar',
+        site: 'Asosiy sayt', siteTag: 'Rasmiy', siteDesc: 'Yechimlar, ekotizim va IT xizmatlar', siteLive: 'Sayt faol',
+        liTag: 'Korporativ', liDesc: 'Karyera, yangiliklar va kasbiy yangilanishlar', liNote: 'Networking',
+        igTag: 'Madaniyat', igDesc: 'Sahna ortida, tadbirlar va media', igNote: 'Foto va Reels',
+        rights: 'Barcha huquqlar himoyalangan.', footerNote: 'Rasmiy mobil sahifa va QR-hub',
+        copied: 'Havola nusxalandi!', shareText: 'BRB Tech rasmiy aloqa havolalari'
+      }
+    };
+    let currentLang = 'en';
+    function t(key) { return I18N[currentLang][key]; }
+    function setLang(lang, save = true) {
+      if (!I18N[lang]) lang = 'en';
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('bg-brb-red', active);
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('text-slate-400', !active);
+        btn.setAttribute('aria-pressed', active);
+      });
+      if (save) { try { localStorage.setItem('brb-lang', lang); } catch (e) {} }
+    }
+    (function () {
+      let saved = null;
+      try { saved = localStorage.getItem('brb-lang'); } catch (e) {}
+      setLang(saved || 'en', false);
+    })();
+
+    // Toast Notification logic
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', '-translate-y-20', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-20', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // Clipboard Copy Helper
+    function copyToClipboard(text, customMessage = "Copied to clipboard!") {
+      const tempInput = document.createElement("input");
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      showToast(customMessage);
+    }
+
+    function copyPageLink() {
+      copyToClipboard(window.location.href, t("copied"));
+    }
+
+    // Native Web Share API
+    function shareHub() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'BRB Tech Hub',
+          text: t('shareText'),
+          url: window.location.href,
+        }).catch(() => {});
+      } else {
+        copyPageLink();
+      }
+    }
+
+
+  </script>
+</body>
+</html>
